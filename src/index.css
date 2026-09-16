@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #020066;
+  --color-ink-deep: #01023a;
+  --color-ink-soft: #0b127f;
+  --color-ink-line: #1a22a3;
+  --color-cream: #f4efe4;
+  --color-cream-dim: #bfbbb2;
+  --color-amber: #ffb300;
+  --color-coral: #ff6a3d;
+  --color-electric: #4d5dff;
+  --color-sky: #9aa3ff;
+
+  --font-display: "Bricolage Grotesque", "Noto Sans Sinhala", ui-sans-serif, sans-serif;
+  --font-body: "Manrope", "Noto Sans Sinhala", ui-sans-serif, sans-serif;
+  --font-script: "Yellowtail", cursive;
+
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-pulse-ring: pulse-ring 2.4s ease-out infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-14px) rotate(-1deg); }
+  }
+  @keyframes pulse-ring {
+    0% { transform: scale(0.9); opacity: 0.8; }
+    100% { transform: scale(1.8); opacity: 0; }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-ink-deep);
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overflow-x: clip;
+  min-width: 320px;
+  max-width: 100vw;
+}
+
+#root {
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--color-amber);
+  color: var(--color-ink-deep);
+}
+
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(154, 163, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(154, 163, 255, 0.08) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.sticker {
+  text-shadow:
+    5px 5px 0 var(--color-electric),
+    10px 10px 0 rgba(1, 2, 58, 0.9);
+}
+
+@media (min-width: 768px) {
+  .sticker {
+    text-shadow:
+      8px 8px 0 var(--color-electric),
+      16px 16px 0 rgba(1, 2, 58, 0.9);
+  }
+}
+
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-sky);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.si-text {
+  font-family: "Noto Sans Sinhala", var(--font-body);
+  line-height: 1.7;
+}
